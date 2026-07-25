@@ -1,492 +1,738 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KALO MICHEL | Développeur Web Full Stack</title>
-    <meta
-      name="description"
-      content="Portfolio de Michel, développeur web spécialisé en React, JavaScript et création de sites modernes."
-    />
-    <link rel="icon" href="IMAGE/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="IMAGE/favicon.ico" type="image/x-icon" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <!-- ═══════════════ LOADER ═══════════════ -->
-    <div id="loader">
-      <div class="ld-logo">KALO.DEV</div>
-      <div class="ld-bar"><div class="ld-fill"></div></div>
-      <div class="ld-dots"><span></span><span></span><span></span></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CHARAMOU.DEV — Kalo Michel | Développeur Full-Stack & Mobile</title>
+  <meta name="description" content="Kalo Michel, développeur full-stack & mobile basé à Daloa, Côte d'Ivoire. Spécialisé en React, Kotlin/Jetpack Compose, Python Flask, Supabase et intégration IA (Mistral, Gemini). Fondateur de CHARAMOU.DEV." />
+  <meta name="keywords" content="CHARAMOU.DEV, Kalo Michel, développeur Côte d'Ivoire, développeur Daloa, full-stack, mobile Android, Kotlin, React, Python, Supabase, freelance Afrique" />
+  <meta name="author" content="Kalo Michel — CHARAMOU.DEV" />
+  <meta name="theme-color" content="#FF8C00" />
+  <link rel="icon" href="IMAGE/favicon.ico" type="image/x-icon" />
+  <link rel="canonical" href="https://kalomichel.netlify.app" />
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="CHARAMOU.DEV — Kalo Michel | Développeur Full-Stack & Mobile" />
+  <meta property="og:description" content="Développeur full-stack & mobile. Fondateur de CHARAMOU.DEV. Basé à Daloa, Côte d'Ivoire." />
+  <meta property="og:image" content="https://kalomichel.netlify.app/IMAGE/MY.jpg" />
+  <meta property="og:url" content="https://kalomichel.netlify.app" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CHARAMOU.DEV — Kalo Michel" />
+  <meta name="twitter:description" content="Développeur full-stack & mobile basé à Daloa, Côte d'Ivoire." />
+  <meta name="twitter:image" content="https://kalomichel.netlify.app/IMAGE/MY.jpg" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Kalo Michel",
+    "brand": { "@type": "Brand", "name": "CHARAMOU.DEV" },
+    "url": "https://kalomichel.netlify.app",
+    "sameAs": [
+      "https://www.linkedin.com/in/michel-kalo",
+      "https://github.com/michelkalo3-cell"
+    ],
+    "jobTitle": "Développeur Full-Stack & Mobile",
+    "knowsAbout": ["React", "Kotlin", "Jetpack Compose", "Python Flask", "Supabase", "Mistral AI", "Gemini AI"],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Daloa",
+      "addressRegion": "Côte d'Ivoire"
+    }
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="ld-brand">CHARAMOU<span>.DEV</span></div>
+    <div class="ld-bar"><div class="ld-fill"></div></div>
+    <div class="ld-dots"><span></span><span></span><span></span></div>
+  </div>
+
+  <!-- CURSOR -->
+  <div id="cur"></div>
+  <div id="cur-ring"></div>
+
+  <!-- CANVAS BACKGROUND -->
+  <canvas id="pcanvas"></canvas>
+
+  <!-- NAVBAR -->
+  <nav class="nav" id="nav">
+    <div class="nav-wrap">
+      <a href="#accueil" class="nav-brand">CHARAMOU<span>.DEV</span></a>
+      <ul class="nav-links">
+        <li><a href="#accueil"     class="nav-link">Accueil</a></li>
+        <li><a href="#apropos"     class="nav-link">À propos</a></li>
+        <li><a href="#competences" class="nav-link">Compétences</a></li>
+        <li><a href="#experience"  class="nav-link">Expérience</a></li>
+        <li><a href="#projets"     class="nav-link">Projets</a></li>
+        <li><a href="#contact"     class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-toggle" id="navToggle" aria-label="Menu" role="button" tabindex="0">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#accueil"     class="nav-link">🏡 Accueil</a>
+      <a href="#apropos"     class="nav-link">👤 À propos</a>
+      <a href="#competences" class="nav-link">💡 Compétences</a>
+      <a href="#experience"  class="nav-link">📌 Expérience</a>
+      <a href="#projets"     class="nav-link">🚀 Projets</a>
+      <a href="#contact"     class="nav-link">☎ Contact</a>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="accueil" class="hero">
+    <div class="hero-wrap">
+      <div class="hero-content" data-reveal="up">
+        <div class="badge-avail">
+          <span class="avail-dot"></span>
+          Disponible pour nouveaux projets
+        </div>
+        <h1 class="hero-h1">
+          Bonjour, je suis<br />
+          <span class="hero-name">KALO MICHEL</span>
+          <span class="hero-typed" id="typed"></span><span class="cursor-blink">|</span>
+        </h1>
+        <p class="hero-desc">
+          Fondateur de <strong>CHARAMOU.DEV</strong> — je conçois des applications web et mobiles pour les PME d'Afrique Francophone et les clients remote. Full-Stack React/Node.js, Android Kotlin/Compose, et intégration IA avec Mistral &amp; Gemini.
+        </p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn btn-p"><i class="fas fa-paper-plane"></i> Me contacter</a>
+          <a href="#projets" class="btn btn-o"><i class="fas fa-eye"></i> Voir mes projets</a>
+        </div>
+        <div class="hero-certs">
+          <span class="cert-badge"><i class="fas fa-certificate"></i> Claude 101</span>
+          <span class="cert-badge"><i class="fas fa-certificate"></i> Claude Code in Action</span>
+        </div>
+      </div>
+
+      <div class="hero-scene" data-reveal="right">
+        <div class="hero-3d" id="hero3d">
+          <!-- Orbitaux 3D CSS -->
+          <div class="orbit orbit-1">
+            <div class="orbit-dot"><i class="fab fa-react"></i></div>
+          </div>
+          <div class="orbit orbit-2">
+            <div class="orbit-dot"><i class="fab fa-python"></i></div>
+          </div>
+          <div class="orbit orbit-3">
+            <div class="orbit-dot"><i class="fab fa-android"></i></div>
+          </div>
+          <!-- Photo centrale -->
+          <div class="photo-wrap">
+            <div class="photo-glow"></div>
+            <div class="photo">
+              <img src="IMAGE/MY.jpg" alt="Kalo Michel — CHARAMOU.DEV" loading="eager" width="240" height="240"
+                onerror="this.parentElement.innerHTML='<i class=\'fas fa-user\' style=\'font-size:5rem;color:rgba(255,140,0,0.5);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)\'></i>'" />
+            </div>
+          </div>
+          <!-- Icônes flottantes -->
+          <div class="float-icon fi-1"><i class="fas fa-mobile-alt"></i></div>
+          <div class="float-icon fi-2"><i class="fas fa-brain"></i></div>
+          <div class="float-icon fi-3"><i class="fas fa-database"></i></div>
+          <div class="float-icon fi-4"><i class="fas fa-code"></i></div>
+        </div>
+      </div>
     </div>
 
-    <!-- ═══════════════ CURSOR ═══════════════ -->
-    <div id="cur"></div>
-    <div id="cur-ring"></div>
-
-    <!-- ═══════════════ PARTICLES ═══════════════ -->
-    <canvas id="pcanvas"></canvas>
-
-    <!-- ═══════════════ NAVBAR ═══════════════ -->
-    <nav class="nav" id="nav">
-      <div class="nav-wrap">
-        <a href="#accueil" class="nav-brand">KALO.DEV</a>
-        <ul class="nav-links">
-          <li><a href="#accueil" class="nav-link">Accueil</a></li>
-          <li><a href="#apropos" class="nav-link">À propos</a></li>
-          <li><a href="#competences" class="nav-link">Compétences</a></li>
-          <li><a href="#experience" class="nav-link">Expérience</a></li>
-          <li><a href="#projets" class="nav-link">Projets</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-        <div class="nav-toggle" id="navToggle">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </div>
+    <!-- Stats rapides -->
+    <div class="hero-stats container">
+      <div class="hstat" data-reveal="up">
+        <div class="hstat-num" data-count="2">0</div>
+        <div class="hstat-lbl">Ans d'expérience</div>
       </div>
-      <div class="mobile-menu" id="mobileMenu">
-        <a href="#accueil" class="nav-link">Accueil 🏡</a>
-        <a href="#apropos" class="nav-link">À propos</a>
-        <a href="#competences" class="nav-link">Compétences 💡</a>
-        <a href="#experience" class="nav-link">Expérience</a>
-        <a href="#projets" class="nav-link">Projets 🚀</a>
-        <a href="#contact" class="nav-link">Contact ☎</a>
+      <div class="hstat-div"></div>
+      <div class="hstat" data-reveal="up">
+        <div class="hstat-num" data-count="10">0</div>
+        <div class="hstat-lbl">Projets livrés</div>
       </div>
-    </nav>
+      <div class="hstat-div"></div>
+      <div class="hstat" data-reveal="up">
+        <div class="hstat-num" data-count="15">0</div>
+        <div class="hstat-lbl">Technologies</div>
+      </div>
+      <div class="hstat-div"></div>
+      <div class="hstat" data-reveal="up">
+        <div class="hstat-num" data-count="3">0</div>
+        <div class="hstat-lbl">Clients actifs</div>
+      </div>
+    </div>
+  </section>
 
-    <!-- ═══════════════ HERO ═══════════════ -->
-    <section id="accueil" class="hero">
-      <div class="hero-wrap">
-        <div class="hero-content" data-reveal="up">
-          <div class="badge-avail">
-            <span class="avail-dot"></span>
-            Disponible pour nouveaux projets
-          </div>
-          <h1 class="hero-h1">
-            BIENVENU <br />
-            je suis<br />
-            <span class="hero-name">KALO MICHEL</span>
-            <span class="hero-typed" id="typed"></span
-            ><span class="cursor-blink">|</span>
-          </h1>
-          <p class="hero-desc">
-            Informaticien passionné avec plus de 2 ans d'expérience en
-            développement web &amp; mobile. Je transforme des idées en
-            expériences numériques modernes et performantes.
+  <!-- ═══ ABOUT ═══ -->
+  <section id="apropos" class="about">
+    <div class="container">
+      <div class="sec-head" data-reveal="up">
+        <span class="sec-label">Qui suis-je ?</span>
+        <h2 class="sec-title">À propos de <em>moi</em></h2>
+        <p class="sec-sub">Développeur passionné, entrepreneur en devenir, basé à Daloa</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-text" data-reveal="left">
+          <p class="about-p">
+            Étudiant en BTS Informatique à l'<strong>EIAFC</strong> et fondateur de <strong>CHARAMOU.DEV</strong>, je construis des solutions numériques concrètes pour les PME ivoiriennes et les clients internationaux. Chaque projet est une opportunité d'allier performance technique et impact réel.
           </p>
-          <div class="hero-btns">
-            <a href="#contact" class="btn btn-p"
-              ><i class="fas fa-paper-plane"></i> Me contacter</a
-            >
-            <a href="#projets" class="btn btn-o"
-              ><i class="fas fa-eye"></i> Mes projets</a
-            >
-          </div>
-        </div>
-
-        <div class="hero-scene" data-reveal="right">
-          <div class="hero-3d">
-            <div class="orb orb1"><span class="orb-dot"></span></div>
-            <div class="orb orb2"><span class="orb-dot"></span></div>
-            <div class="orb orb3"><span class="orb-dot"></span></div>
-            <div class="photo">
-              <img
-                src="IMAGE/MY.jpg"
-                alt="KALO MICHEL"
-                onerror="
-                  this.parentElement.innerHTML =
-                    '<i class=\'fas fa-user\' style=\'font-size:6rem;color:rgba(255,255,255,0.5);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)\'></i>'
-                "
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════ ABOUT ═══════════════ -->
-    <section id="apropos" class="about">
-      <div class="container">
-        <div class="sec-head" data-reveal="up">
-          <span class="sec-label">Qui suis-je ?</span>
-          <h2 class="sec-title">À propos de <em>moi</em></h2>
-          <p class="sec-sub">
-            Découvrez mon parcours et ma passion pour l'informatique
+          <p class="about-p" style="margin-top:14px">
+            Mon approche : coder vite, coder propre, livrer de la valeur. Du POC au produit, j'accompagne les idées jusqu'à la mise en production — web, mobile Android, ou agent IA.
           </p>
-        </div>
-        <div class="about-grid">
-          <div data-reveal="left">
-            <p class="about-p">
-              Passionné par l'informatique depuis plus de 2 ans, je suis un
-              informaticien en voie d'excellence spécialisé dans le
-              développement d'applications web et mobiles. Je crée des
-              interfaces modernes, performantes et belles.
-            </p>
-            <div class="about-chips">
-              <span class="chip">🚀 Problem Solver</span>
-              <span class="chip">💡 Créatif</span>
-              <span class="chip">📱 Mobile-First</span>
-              <span class="chip">⚡ Performant</span>
-              <span class="chip">🎨 UI/UX</span>
-            </div>
-            <div class="stats">
-              <div class="stat-card" data-reveal="zoom">
-                <div class="stat-num" data-count="2">0</div>
-                <div class="stat-lbl">Années d'expérience</div>
-              </div>
-              <div class="stat-card" data-reveal="zoom">
-                <div class="stat-num" data-count="7">0</div>
-                <div class="stat-lbl">Projets réalisés</div>
-              </div>
-              <div class="stat-card" data-reveal="zoom">
-                <div class="stat-num" data-count="4">0</div>
-                <div class="stat-lbl">Technologies</div>
-              </div>
-            </div>
+          <div class="about-chips">
+            <span class="chip">🚀 Builder</span>
+            <span class="chip">📱 Mobile-First</span>
+            <span class="chip">🤖 IA Applied</span>
+            <span class="chip">⚡ Fast Delivery</span>
+            <span class="chip">🌍 Afrique Francophone</span>
           </div>
+          <div class="about-links">
+            <a href="https://github.com/michelkalo3-cell" target="_blank" class="about-link">
+              <i class="fab fa-github"></i> michelkalo3-cell
+            </a>
+            <a href="https://www.linkedin.com/in/michel-kalo" target="_blank" class="about-link">
+              <i class="fab fa-linkedin"></i> michel-kalo
+            </a>
+          </div>
+        </div>
 
-          <div class="about-visual" data-reveal="right">
-            <div class="about-box" id="aboutBox">
-              <i class="fas fa-code"></i>
+        <div class="about-card-wrap" data-reveal="right">
+          <div class="about-card" id="aboutBox">
+            <div class="ac-header">
+              <div class="ac-avatar">KM</div>
+              <div>
+                <div class="ac-name">Kalo Michel</div>
+                <div class="ac-role">Full-Stack &amp; Mobile Dev</div>
+              </div>
+              <div class="ac-status"><span class="avail-dot"></span> Disponible</div>
             </div>
+            <div class="ac-divider"></div>
+            <div class="ac-rows">
+              <div class="ac-row"><i class="fas fa-map-marker-alt"></i><span>Daloa, Côte d'Ivoire</span></div>
+              <div class="ac-row"><i class="fas fa-graduation-cap"></i><span>BTS Informatique — EIAFC</span></div>
+              <div class="ac-row"><i class="fas fa-briefcase"></i><span>Freelance — CHARAMOU.DEV</span></div>
+              <div class="ac-row"><i class="fab fa-github"></i><span>michelkalo3-cell</span></div>
+            </div>
+            <div class="ac-divider"></div>
+            <div class="ac-stack">
+              <span class="ac-tag">Kotlin</span>
+              <span class="ac-tag">React</span>
+              <span class="ac-tag">Python</span>
+              <span class="ac-tag">Supabase</span>
+              <span class="ac-tag">Mistral</span>
+              <span class="ac-tag">n8n</span>
+            </div>
+            <!-- Décorations 3D -->
+            <div class="ac-glow ac-glow-1"></div>
+            <div class="ac-glow ac-glow-2"></div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ═══════════════ SKILLS ═══════════════ -->
-    <section id="competences" class="skills">
-      <div class="container">
-        <div class="sec-head" data-reveal="up">
-          <span class="sec-label">Expertise</span>
-          <h2 class="sec-title">Mes <em>compétences</em></h2>
-          <p class="sec-sub">Technologies et outils que je maîtrise</p>
-        </div>
-        <div class="skills-grid">
-          <div class="skill-card" data-reveal="up">
+  <!-- ═══ SKILLS ═══ -->
+  <section id="competences" class="skills">
+    <div class="container">
+      <div class="sec-head" data-reveal="up">
+        <span class="sec-label">Expertise</span>
+        <h2 class="sec-title">Mes <em>compétences</em></h2>
+        <p class="sec-sub">Technologies maîtrisées et outils utilisés quotidiennement</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card" data-reveal="up" data-skill-level="88">
+          <div class="sk-head">
             <div class="sk-icon sk1"><i class="fas fa-laptop-code"></i></div>
-            <h3>Frontend</h3>
-            <div class="badges">
-              <span class="badge"><span>HTML5</span></span>
-              <span class="badge"><span>CSS3</span></span>
-              <span class="badge"><span>JavaScript</span></span>
-              <span class="badge"><span>React</span></span>
-              <span class="badge"><span>Responsive</span></span>
+            <div>
+              <h3>Frontend Web</h3>
+              <div class="sk-level-text">88%</div>
             </div>
           </div>
+          <div class="sk-bar"><div class="sk-fill"></div></div>
+          <div class="sk-badges">
+            <span class="badge">React</span><span class="badge">Next.js</span>
+            <span class="badge">JavaScript</span><span class="badge">HTML5/CSS3</span>
+            <span class="badge">Three.js</span><span class="badge">Tailwind</span>
+          </div>
+        </div>
 
-          <div class="skill-card" data-reveal="up">
-            <div class="sk-icon sk2"><i class="fas fa-server"></i></div>
-            <h3>Backend</h3>
-            <div class="badges">
-              <span class="badge"><span>Python</span></span>
-              <span class="badge"><span>Java</span></span>
-              <span class="badge"><span>Node.js</span></span>
-              <span class="badge"><span>REST API</span></span>
+        <div class="skill-card" data-reveal="up" data-skill-level="80">
+          <div class="sk-head">
+            <div class="sk-icon sk2"><i class="fas fa-mobile-alt"></i></div>
+            <div>
+              <h3>Mobile Android</h3>
+              <div class="sk-level-text">80%</div>
             </div>
           </div>
+          <div class="sk-bar"><div class="sk-fill"></div></div>
+          <div class="sk-badges">
+            <span class="badge">Kotlin</span><span class="badge">Jetpack Compose</span>
+            <span class="badge">Hilt/Room</span><span class="badge">MVVM</span>
+            <span class="badge">AdMob</span>
+          </div>
+        </div>
 
-          <div class="skill-card" data-reveal="up">
-            <div class="sk-icon sk3"><i class="fas fa-mobile-alt"></i></div>
-            <h3>Mobile</h3>
-            <div class="badges">
-              <span class="badge"><span>React Native</span></span>
-              <span class="badge"><span>Android</span></span>
-              <span class="badge"><span>Kotlin</span></span>
+        <div class="skill-card" data-reveal="up" data-skill-level="75">
+          <div class="sk-head">
+            <div class="sk-icon sk3"><i class="fas fa-server"></i></div>
+            <div>
+              <h3>Backend & API</h3>
+              <div class="sk-level-text">75%</div>
             </div>
           </div>
+          <div class="sk-bar"><div class="sk-fill"></div></div>
+          <div class="sk-badges">
+            <span class="badge">Python Flask</span><span class="badge">Node.js</span>
+            <span class="badge">REST API</span><span class="badge">Supabase</span>
+            <span class="badge">PostgreSQL</span>
+          </div>
+        </div>
 
-          <div class="skill-card" data-reveal="up">
-            <div class="sk-icon sk4"><i class="fas fa-database"></i></div>
-            <h3>Base de données &amp; Outils</h3>
-            <div class="badges">
-              <span class="badge"><span>MySQL</span></span>
-              <span class="badge"><span>Git</span></span>
-              <span class="badge"><span>VS Code</span></span>
-              <span class="badge"><span>Supabase</span></span>
+        <div class="skill-card" data-reveal="up" data-skill-level="70">
+          <div class="sk-head">
+            <div class="sk-icon sk4"><i class="fas fa-brain"></i></div>
+            <div>
+              <h3>IA & Agents</h3>
+              <div class="sk-level-text">70%</div>
             </div>
+          </div>
+          <div class="sk-bar"><div class="sk-fill"></div></div>
+          <div class="sk-badges">
+            <span class="badge">Mistral API</span><span class="badge">Gemini API</span>
+            <span class="badge">RAG</span><span class="badge">n8n</span>
+            <span class="badge">CrewAI</span>
+          </div>
+        </div>
+
+        <div class="skill-card" data-reveal="up" data-skill-level="72">
+          <div class="sk-head">
+            <div class="sk-icon sk5"><i class="fas fa-database"></i></div>
+            <div>
+              <h3>Data & DevOps</h3>
+              <div class="sk-level-text">72%</div>
+            </div>
+          </div>
+          <div class="sk-bar"><div class="sk-fill"></div></div>
+          <div class="sk-badges">
+            <span class="badge">Supabase</span><span class="badge">MySQL</span>
+            <span class="badge">GitHub Actions</span><span class="badge">Netlify</span>
+            <span class="badge">Docker</span>
+          </div>
+        </div>
+
+        <div class="skill-card" data-reveal="up" data-skill-level="85">
+          <div class="sk-head">
+            <div class="sk-icon sk6"><i class="fas fa-paint-brush"></i></div>
+            <div>
+              <h3>UI/UX & Design</h3>
+              <div class="sk-level-text">85%</div>
+            </div>
+          </div>
+          <div class="sk-bar"><div class="sk-fill"></div></div>
+          <div class="sk-badges">
+            <span class="badge">Figma</span><span class="badge">shadcn/ui</span>
+            <span class="badge">Aceternity UI</span><span class="badge">HeroUI</span>
+            <span class="badge">Canva</span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ═══════════════ EXPERIENCE ═══════════════ -->
-    <section id="experience" class="xp">
-      <div class="container">
-        <div class="sec-head" data-reveal="up">
-          <span class="sec-label">Parcours</span>
-          <h2 class="sec-title">Mon <em>expérience</em></h2>
-          <p class="sec-sub">Mon parcours professionnel dans l'informatique</p>
+  <!-- ═══ EXPERIENCE ═══ -->
+  <section id="experience" class="xp">
+    <div class="container">
+      <div class="sec-head" data-reveal="up">
+        <span class="sec-label">Parcours</span>
+        <h2 class="sec-title">Mon <em>expérience</em></h2>
+        <p class="sec-sub">Ce que j'ai construit et pour qui</p>
+      </div>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-box">
+            <div class="tl-tag">En cours</div>
+            <h3>Fondateur & Développeur — CHARAMOU.DEV</h3>
+            <div class="tl-meta">
+              <span><i class="fas fa-user-tie"></i> Freelance</span>
+              <span><i class="fas fa-calendar-alt"></i> 2024 – Présent</span>
+            </div>
+            <p>Conception et livraison de solutions numériques pour PME ivoiriennes et clients remote : applications POS, sites institutionnels, apps Android, intégrations IA. Brand positionné sur le marché Francophone Africain.</p>
+          </div>
         </div>
-        <div class="timeline">
-          <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div class="tl-box">
-              <h3>Développeur Full-Stack</h3>
-              <div class="tl-meta">
-                <span class="tl-co"
-                  ><i class="fas fa-building"></i> InnovTech</span
-                >
-                <span class="tl-per"
-                  ><i class="fas fa-calendar-alt"></i> 2025</span
-                >
-              </div>
-              <p>
-                Développement et conception de sites web modernes utilisant
-                HTML5, CSS3 et JavaScript. Création d'interfaces responsive et
-                performantes pour une clientèle variée.
-              </p>
-            </div>
-          </div>
 
-          <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div class="tl-box">
-              <h3>Développeur Freelance</h3>
-              <div class="tl-meta">
-                <span class="tl-co"
-                  ><i class="fas fa-user-tie"></i> Indépendant</span
-                >
-                <span class="tl-per"
-                  ><i class="fas fa-calendar-alt"></i> 2025 – Présent</span
-                >
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-box">
+            <div class="tl-tag">Projet client</div>
+            <h3>Développeur Web — ZILECO Sarl</h3>
+            <div class="tl-meta">
+              <span><i class="fas fa-building"></i> IT Network Services, Daloa</span>
+              <span><i class="fas fa-calendar-alt"></i> 2025</span>
+            </div>
+            <p>Création de supports de communication digitaux (flyers, présentation services IT) et outils web pour une entreprise de réseau informatique à Daloa, Côte d'Ivoire.</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-box">
+            <div class="tl-tag">Client institutionnel</div>
+            <h3>Développeur Web — EIAFC</h3>
+            <div class="tl-meta">
+              <span><i class="fas fa-graduation-cap"></i> École EIAFC, Côte d'Ivoire</span>
+              <span><i class="fas fa-calendar-alt"></i> 2025</span>
+            </div>
+            <p>Refonte et correction du site universitaire multi-pages (jQuery, GSAP, AOS, particles.js). 12 bugs corrigés, 6 améliorations livrées. Site toujours en production.</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-box">
+            <div class="tl-tag">Formation</div>
+            <h3>Étudiant BTS Informatique — EIAFC</h3>
+            <div class="tl-meta">
+              <span><i class="fas fa-university"></i> Daloa, Côte d'Ivoire</span>
+              <span><i class="fas fa-calendar-alt"></i> 2023 – Présent</span>
+            </div>
+            <p>Formation en développement logiciel, bases de données, algorithmique et systèmes. Projets académiques livrés en parallèle de projets freelance réels.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROJETS ═══ -->
+  <section id="projets" class="projects">
+    <div class="container">
+      <div class="sec-head" data-reveal="up">
+        <span class="sec-label">Portfolio</span>
+        <h2 class="sec-title">Mes <em>projets</em></h2>
+        <p class="sec-sub">Survol ou tap sur les cartes pour voir les détails ✨</p>
+      </div>
+      <div class="proj-grid">
+
+        <!-- MAQUIS-GEST -->
+        <div class="proj-card" data-reveal="up">
+          <div class="proj-inner">
+            <div class="proj-front">
+              <div class="proj-img proj-img-1">
+                <i class="fas fa-cash-register"></i>
+                <div class="proj-img-label">POS App</div>
               </div>
-              <p>
-                Réalisation de projets variés : applications web, sites
-                vitrines, outils de gestion POS et systèmes d'analyse pour des
-                clients en Côte d'Ivoire.
-              </p>
+              <div class="proj-body">
+                <h3>MAQUIS-GEST</h3>
+                <p>Système de caisse pour bars et maquis ivoiriens. 47 produits préconfigurés, prix en FCFA, mode hors-ligne.</p>
+                <div class="proj-tags">
+                  <span class="proj-tag">Kotlin</span><span class="proj-tag">Jetpack Compose</span>
+                  <span class="proj-tag">Room</span><span class="proj-tag">Hilt</span>
+                  <span class="proj-tag">Flask</span><span class="proj-tag">Supabase</span>
+                </div>
+              </div>
+            </div>
+            <div class="proj-back proj-back-1">
+              <i class="fas fa-cash-register proj-back-icon"></i>
+              <h3>MAQUIS-GEST</h3>
+              <p>App Android native + version web Flask/Supabase + version HTML offline. AdMob intégré. RLS Supabase, JWT auth, werkzeug hashing. 3 plateformes, 1 seul projet.</p>
+              <div class="proj-platforms">
+                <span>📱 Android</span><span>🌐 Web</span><span>📄 HTML</span>
+              </div>
+              <a href="https://github.com/michelkalo3-cell" class="proj-github" target="_blank">
+                <i class="fab fa-github"></i> Voir sur GitHub
+              </a>
             </div>
           </div>
+        </div>
+
+        <!-- FLIPPERCLONE WEB -->
+        <div class="proj-card" data-reveal="up">
+          <div class="proj-inner">
+            <div class="proj-front">
+              <div class="proj-img proj-img-2">
+                <i class="fas fa-wifi"></i>
+                <div class="proj-img-label">Hacking Tool</div>
+              </div>
+              <div class="proj-body">
+                <h3>FlipperClone Web v3</h3>
+                <p>Émulateur web du Flipper Zero — 30 modules : IR, NFC, WiFi, BLE, SubGHz, BadUSB, GPIO, EMV, TOTP...</p>
+                <div class="proj-tags">
+                  <span class="proj-tag">HTML/JS Pur</span><span class="proj-tag">localStorage</span>
+                  <span class="proj-tag">CRT Aesthetic</span><span class="proj-tag">PWA</span>
+                </div>
+              </div>
+            </div>
+            <div class="proj-back proj-back-2">
+              <i class="fas fa-wifi proj-back-icon"></i>
+              <h3>FlipperClone Web v3</h3>
+              <p>30 modules complets en pure HTML/JS, zéro dépendance, mobile-first avec esthétique CRT terminal. IR brute-force, MIFARE NFC, DuckyScript, EMF Analyzer, File Explorer.</p>
+              <div class="proj-platforms">
+                <span>🌐 Web</span><span>📱 Mobile</span><span>⚡ Offline</span>
+              </div>
+              <a href="https://github.com/michelkalo3-cell" class="proj-github" target="_blank">
+                <i class="fab fa-github"></i> Voir sur GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- FLIPPERCLONE ANDROID -->
+        <div class="proj-card" data-reveal="up">
+          <div class="proj-inner">
+            <div class="proj-front">
+              <div class="proj-img proj-img-3">
+                <i class="fab fa-android"></i>
+                <div class="proj-img-label">Android App</div>
+              </div>
+              <div class="proj-body">
+                <h3>FlipperClone Android</h3>
+                <p>App Android native reproduisant le Flipper Zero. 4 modules : IR, WiFi, Bluetooth, NFC. Architecture MVVM.</p>
+                <div class="proj-tags">
+                  <span class="proj-tag">Kotlin</span><span class="proj-tag">Compose</span>
+                  <span class="proj-tag">Hilt</span><span class="proj-tag">Room</span>
+                  <span class="proj-tag">BLE</span>
+                </div>
+              </div>
+            </div>
+            <div class="proj-back proj-back-3">
+              <i class="fab fa-android proj-back-icon"></i>
+              <h3>FlipperClone Android</h3>
+              <p>29 fichiers Kotlin, MVVM + Hilt 2.51 + Room 2.6 + Jetpack Compose BOM 2025. Bluetooth API 31+, NFC MIFARE/NDEF, IR NEC/RC5/SONY. Font Pixeloid Sans. Target SDK 35.</p>
+              <div class="proj-platforms">
+                <span>📱 Android SDK 26+</span><span>🎨 CRT UI</span>
+              </div>
+              <a href="https://github.com/michelkalo3-cell" class="proj-github" target="_blank">
+                <i class="fab fa-github"></i> Voir sur GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- OMNIFLOW -->
+        <div class="proj-card proj-card-featured" data-reveal="up">
+          <div class="proj-inner">
+            <div class="proj-front">
+              <div class="proj-img proj-img-4">
+                <i class="fas fa-rocket"></i>
+                <div class="proj-img-label">SaaS · En cours</div>
+              </div>
+              <div class="proj-body">
+                <h3>OmniFlow <span class="proj-wip">WIP</span></h3>
+                <p>SaaS multi-secteur pour PME : CRM, inventaire, email marketing, automatisations n8n, IA Mistral + Gemini.</p>
+                <div class="proj-tags">
+                  <span class="proj-tag">Next.js</span><span class="proj-tag">Supabase</span>
+                  <span class="proj-tag">Mistral</span><span class="proj-tag">n8n</span>
+                  <span class="proj-tag">HeroUI</span>
+                </div>
+              </div>
+            </div>
+            <div class="proj-back proj-back-4">
+              <i class="fas fa-rocket proj-back-icon"></i>
+              <h3>OmniFlow</h3>
+              <p>6 secteurs : Agriculture 🌿, Maquis 🍺, Restauration 🍫, Commerce 🛒, Éducation 📘, Services Pro 🏢. Dashboard généré automatiquement par IA selon le profil PME.</p>
+              <div class="proj-platforms">
+                <span>🌐 SaaS Web</span><span>🤖 IA Native</span>
+              </div>
+              <a href="#contact" class="proj-github">
+                <i class="fas fa-envelope"></i> Me contacter pour plus
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- EIAFC -->
+        <div class="proj-card" data-reveal="up">
+          <div class="proj-inner">
+            <div class="proj-front">
+              <div class="proj-img proj-img-5">
+                <i class="fas fa-university"></i>
+                <div class="proj-img-label">Institutionnel</div>
+              </div>
+              <div class="proj-body">
+                <h3>Site EIAFC</h3>
+                <p>Refonte du site universitaire multi-pages avec animations GSAP, AOS et particles.js. 12 bugs corrigés.</p>
+                <div class="proj-tags">
+                  <span class="proj-tag">HTML/CSS/JS</span><span class="proj-tag">jQuery</span>
+                  <span class="proj-tag">GSAP</span><span class="proj-tag">Foundation CSS</span>
+                </div>
+              </div>
+            </div>
+            <div class="proj-back proj-back-5">
+              <i class="fas fa-university proj-back-icon"></i>
+              <h3>Site EIAFC</h3>
+              <p>12 bugs corrigés (navigation mobile, animations broken, formulaires) + 6 améliorations (accessibilité, perf, SEO). Site institutionnel en production pour l'école.</p>
+              <div class="proj-platforms">
+                <span>🌐 Web</span><span>✅ En production</span>
+              </div>
+              <a href="https://github.com/michelkalo3-cell" class="proj-github" target="_blank">
+                <i class="fab fa-github"></i> Voir sur GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- DEVLAB -->
+        <div class="proj-card" data-reveal="up">
+          <div class="proj-inner">
+            <div class="proj-front">
+              <div class="proj-img proj-img-6">
+                <i class="fas fa-robot"></i>
+                <div class="proj-img-label">AI Factory</div>
+              </div>
+              <div class="proj-body">
+                <h3>DevLab AI Factory</h3>
+                <p>Usine logicielle autonome multi-agents avec CrewAI. Génère des apps full-stack JS à partir d'un brief.</p>
+                <div class="proj-tags">
+                  <span class="proj-tag">Python</span><span class="proj-tag">CrewAI</span>
+                  <span class="proj-tag">Mistral</span><span class="proj-tag">Gemini</span>
+                  <span class="proj-tag">Multi-Agent</span>
+                </div>
+              </div>
+            </div>
+            <div class="proj-back proj-back-6">
+              <i class="fas fa-robot proj-back-icon"></i>
+              <h3>DevLab AI Factory</h3>
+              <p>Architecture multi-agents : Mistral pour la génération de code répétitive, Gemini pour le raisonnement/planning. 11 sections de documentation, pipeline full-stack JS automatisé.</p>
+              <div class="proj-platforms">
+                <span>🤖 Multi-Agent</span><span>🐍 Python</span>
+              </div>
+              <a href="https://github.com/michelkalo3-cell" class="proj-github" target="_blank">
+                <i class="fab fa-github"></i> Voir sur GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="sec-head" data-reveal="up">
+        <span class="sec-label">Parlons-en</span>
+        <h2 class="sec-title"><em>Contactez</em>-moi</h2>
+        <p class="sec-sub">Un projet web, mobile ou IA ? Discutons-en.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-items" data-reveal="left">
+          <a class="c-item" href="mailto:michelkalo3@gmail.com">
+            <div class="c-ico c-ico-1"><i class="fas fa-envelope"></i></div>
+            <div><div class="c-label">Email</div><span class="c-text">michelkalo3@gmail.com</span></div>
+          </a>
+          <a class="c-item" href="tel:+2250508294899">
+            <div class="c-ico c-ico-2"><i class="fas fa-phone"></i></div>
+            <div><div class="c-label">Téléphone</div><span class="c-text">+225 05 08 29 48 99</span></div>
+          </a>
+          <a class="c-item" href="https://wa.me/+2250565665873" target="_blank" rel="noopener noreferrer">
+            <div class="c-ico c-ico-wa"><i class="fab fa-whatsapp"></i></div>
+            <div><div class="c-label">WhatsApp</div><span class="c-text">+225 05 65 66 58 73</span></div>
+          </a>
+          <div class="c-item">
+            <div class="c-ico c-ico-3"><i class="fas fa-map-marker-alt"></i></div>
+            <div><div class="c-label">Localisation</div><span class="c-text">Daloa — Côte d'Ivoire 🇨🇮</span></div>
+          </div>
+          <a class="c-item" href="https://www.linkedin.com/in/michel-kalo" target="_blank">
+            <div class="c-ico c-ico-4"><i class="fab fa-linkedin"></i></div>
+            <div><div class="c-label">LinkedIn</div><span class="c-text">linkedin.com/in/michel-kalo</span></div>
+          </a>
+          <a class="c-item" href="https://github.com/michelkalo3-cell" target="_blank">
+            <div class="c-ico c-ico-gh"><i class="fab fa-github"></i></div>
+            <div><div class="c-label">GitHub</div><span class="c-text">michelkalo3-cell</span></div>
+          </a>
+        </div>
+
+        <div class="cform" data-reveal="right">
+          <div class="cform-head">
+            <h3>Envoyer un message</h3>
+            <p>Je réponds sous 24h</p>
+          </div>
+          <form id="cformEl" novalidate>
+            <div class="fgroup">
+              <label for="f-name">Votre nom</label>
+              <input type="text" id="f-name" name="from_name" placeholder="Ex: Kouassi Amani" required autocomplete="name" />
+            </div>
+            <div class="fgroup">
+              <label for="f-email">Votre email</label>
+              <input type="email" id="f-email" name="from_email" placeholder="nom@exemple.com" required autocomplete="email" />
+            </div>
+            <div class="fgroup">
+              <label for="f-subject">Sujet</label>
+              <input type="text" id="f-subject" name="subject" placeholder="Ex: Développement d'une app Android" required />
+            </div>
+            <div class="fgroup">
+              <label for="f-message">Votre message</label>
+              <textarea id="f-message" name="message" rows="5" placeholder="Décrivez votre projet..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-p btn-full" id="submitBtn">
+              <i class="fas fa-paper-plane"></i> Envoyer le message
+            </button>
+            <div id="form-feedback" class="form-feedback" aria-live="polite"></div>
+          </form>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ═══════════════ PROJECTS ═══════════════ -->
-    <section id="projets" class="projects">
-      <div class="container">
-        <div class="sec-head" data-reveal="up">
-          <span class="sec-label">Portfolio</span>
-          <h2 class="sec-title">Mes <em>projets</em></h2>
-          <p class="sec-sub">
-            Survolez les cartes pour découvrir les détails ✨
-          </p>
-        </div>
-        <div class="proj-grid">
-          <div class="proj-card" data-reveal="up">
-            <div class="proj-inner">
-              <div class="proj-front">
-                <div class="proj-img proj-img-1">
-                  <i class="fas fa-shopping-cart"></i>
-                </div>
-                <div class="proj-body">
-                  <h3>Plateforme E-commerce</h3>
-                  <p>
-                    Solution de vente en ligne avec gestion de catalogue, panier
-                    et tableau de bord.
-                  </p>
-                  <div class="proj-tags">
-                    <span class="proj-tag">HTML5</span>
-                    <span class="proj-tag">CSS3</span>
-                    <span class="proj-tag">Python</span>
-                  </div>
-                </div>
-              </div>
-              <div class="proj-back proj-back-1">
-                <i class="fas fa-shopping-cart proj-back-icon"></i>
-                <h3>Plateforme E-commerce</h3>
-                <p>
-                  Interface complète avec panier dynamique, paiement sécurisé et
-                  tableau de bord vendeur. Responsive et optimisée pour mobile.
-                </p>
-                <div class="proj-hint">
-                  <i class="fas fa-sync-alt"></i> Retournez la carte
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="proj-card" data-reveal="up">
-            <div class="proj-inner">
-              <div class="proj-front">
-                <div class="proj-img proj-img-2">
-                  <i class="fas fa-mobile-alt"></i>
-                </div>
-                <div class="proj-body">
-                  <h3>Application Mobile</h3>
-                  <p>
-                    App cross-platform avec auth, notifications push et sync
-                    temps réel.
-                  </p>
-                  <div class="proj-tags">
-                    <span class="proj-tag">React Native</span>
-                    <span class="proj-tag">Node.js</span>
-                  </div>
-                </div>
-              </div>
-              <div class="proj-back proj-back-2">
-                <i class="fas fa-mobile-alt proj-back-icon"></i>
-                <h3>Application Mobile</h3>
-                <p>
-                  Application disponible sur Android avec plus de 100
-                  utilisateurs actifs. Synchronisation en temps réel et
-                  notifications intelligentes.
-                </p>
-                <div class="proj-hint">
-                  <i class="fas fa-sync-alt"></i> Retournez la carte
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="proj-card" data-reveal="up">
-            <div class="proj-inner">
-              <div class="proj-front">
-                <div class="proj-img proj-img-3">
-                  <i class="fas fa-chart-line"></i>
-                </div>
-                <div class="proj-body">
-                  <h3>Dashboard Analytics</h3>
-                  <p>
-                    Tableau de bord interactif avec visualisation de données en
-                    temps réel.
-                  </p>
-                  <div class="proj-tags">
-                    <span class="proj-tag">React</span>
-                    <span class="proj-tag">Chart.js</span>
-                    <span class="proj-tag">Python</span>
-                  </div>
-                </div>
-              </div>
-              <div class="proj-back proj-back-3">
-                <i class="fas fa-chart-line proj-back-icon"></i>
-                <h3>Dashboard Analytics</h3>
-                <p>
-                  Graphiques dynamiques, exports PDF et rapports automatisés.
-                  Intégration API REST complète et gestion multi-utilisateurs.
-                </p>
-                <div class="proj-hint">
-                  <i class="fas fa-sync-alt"></i> Retournez la carte
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="ft-brand">CHARAMOU<span>.DEV</span></div>
+      <p class="ft-tagline">Votre vision, notre code. Fabriqué à Daloa 🇨🇮</p>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/michel-kalo" target="_blank" class="soc-btn" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://wa.me/+2250565665873" target="_blank" rel="noopener noreferrer" class="soc-btn" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://github.com/michelkalo3-cell" target="_blank" class="soc-btn" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="mailto:michelkalo3@gmail.com" class="soc-btn" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="tel:+2250508294899" class="soc-btn" aria-label="Téléphone">
+          <i class="fas fa-phone-alt"></i>
+        </a>
       </div>
-    </section>
+      <p class="ft-text">&copy; 2026 CHARAMOU.DEV — Kalo Michel. Tous droits réservés.</p>
+      <a href="#accueil" class="ft-back" aria-label="Retour en haut">
+        <i class="fas fa-arrow-up"></i> Retour en haut
+      </a>
+    </div>
+  </footer>
 
-    <!-- ═══════════════ CONTACT ═══════════════ -->
-    <section id="contact" class="contact">
-      <div class="container">
-        <div class="sec-head" data-reveal="up">
-          <span class="sec-label">Parlons-en</span>
-          <h2 class="sec-title"><em>Contactez</em>-moi</h2>
-          <p class="sec-sub">Discutons de votre prochain projet ensemble</p>
-        </div>
-        <div class="contact-grid">
-          <div class="contact-items" data-reveal="left">
-            <a class="c-item" href="mailto:michelkalo3@gmail.com">
-              <div class="c-ico c-ico-1"><i class="fas fa-envelope"></i></div>
-              <span class="c-text">michelkalo3@gmail.com</span>
-            </a>
-            <a class="c-item" href="tel:+2250508294899">
-              <div class="c-ico c-ico-2"><i class="fas fa-phone"></i></div>
-              <span class="c-text">+225 05 08 29 48 99</span>
-            </a>
-            <div class="c-item">
-              <div class="c-ico c-ico-3">
-                <i class="fas fa-map-marker-alt"></i>
-              </div>
-              <span class="c-text">Côte d'Ivoire — Daloa</span>
-            </div>
-            <a
-              class="c-item"
-              href="https://www.linkedin.com/in/michel-kalo"
-              target="_blank"
-            >
-              <div class="c-ico c-ico-4"><i class="fab fa-linkedin"></i></div>
-              <span class="c-text">linkedin.com/in/michel-kalo</span>
-            </a>
-          </div>
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="script.js"></script>
 
-          <div class="cform" data-reveal="right">
-            <form id="cformEl">
-              <div class="fgroup">
-                <input type="text" placeholder="Votre nom" required />
-              </div>
-              <div class="fgroup">
-                <input type="email" placeholder="Votre email" required />
-              </div>
-              <div class="fgroup">
-                <input type="text" placeholder="Sujet" required />
-              </div>
-              <div class="fgroup">
-                <textarea
-                  placeholder="Votre message"
-                  rows="5"
-                  required
-                ></textarea>
-              </div>
-              <button type="submit" class="btn btn-p btn-full">
-                <i class="fas fa-paper-plane"></i> Envoyer le message
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════ FOOTER ═══════════════ -->
-    <footer class="footer">
-      <div class="container">
-        <div class="ft-logo">KALO MICHEL</div>
-        <p class="ft-text">&copy; 2026 KALO MICHEL. Tous droits réservés.</p>
-        <div class="socials">
-          <a href="https://github.com/michelkalo3-cell" class="soc-btn"
-            ><i class="fab fa-facebook"></i
-          ></a>
-          <a
-            href="https://www.linkedin.com/in/michel-kalo"
-            target="_blank"
-            class="soc-btn"
-            ><i class="fab fa-linkedin"></i
-          ></a>
-          <a href="+225 0565665873" class="soc-btn"
-            ><i class="fab fa-whatsapp"></i
-          ></a>
-          <a
-            href="https://github.com/michelkalo3-cell/portfolio_final.git"
-            class="soc-btn"
-            ><i class="fab fa-github"></i
-          ></a>
-          <a href="#" class="soc-btn"><i class="fab fa-twitter"></i></a>
-        </div>
-        <a href="#accueil" class="ft-back"
-          ><i class="fas fa-arrow-up"></i> Retour en haut</a
-        >
-      </div>
-    </footer>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-    ></script>
-    <script type="text/javascript">
-      (function () {
-        emailjs.init({
-          publicKey: "mmMdyZ7efU8E23dzf",
-        });
-      })();
-    </script>
-
-    <script src="script.js"></script>
-  </body>
+  <!-- Service Worker (une seule fois) -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+      });
+    }
+  </script>
+</body>
 </html>
+HTMLEOF

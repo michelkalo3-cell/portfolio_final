@@ -1,0 +1,14 @@
+{
+  "name": "CHARAMOU.DEV — Kalo Michel",
+  "short_name": "CHARAMOU.DEV",
+  "description": "Portfolio de Kalo Michel, développeur full-stack & mobile, fondateur de CHARAMOU.DEV.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0D0D0D",
+  "theme_color": "#FF8C00",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "IMAGE/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "IMAGE/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
