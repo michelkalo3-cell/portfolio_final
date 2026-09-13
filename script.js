@@ -290,9 +290,9 @@ window.addEventListener('load', () => {
 
 /* ── 13. EMAILJS + FORMULAIRE ── */
 (function initForm() {
-  const SERVICE_ID  = 'service_charamou';
-  const TEMPLATE_ID = 'template_portfolio';
-  const PUBLIC_KEY  = 'YOUR_EMAILJS_PUBLIC_KEY';
+  const SERVICE_ID  = 'service_5ha6x3n';
+  const TEMPLATE_ID = 'template_z0ip32b';
+  const PUBLIC_KEY  = 'mmMdyZ7efU8E23dzf';
 
   try { emailjs.init({ publicKey: PUBLIC_KEY }); } catch(e) {}
 
