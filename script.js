@@ -127,6 +127,9 @@ window.addEventListener('load', () => {
       menu.classList.toggle('show', open);
       toggle.setAttribute('aria-expanded', open);
     });
+    toggle.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle.click(); }
+    });
     menu.querySelectorAll('.nav-link').forEach(l => {
       l.addEventListener('click', () => {
         toggle.classList.remove('open');
